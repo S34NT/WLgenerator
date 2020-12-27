@@ -8,11 +8,6 @@ import sys
 
 async def fetchList(listName):
 
-    #async def downloadRunList():
-        #click on the see all vehicles button
-        #event_list > div > div > div > div.left > div.buttons > a:nth-child(1)
-
-
     async def checkForListName(linkTexts, listName):
         
         isFound = False
@@ -27,12 +22,12 @@ async def fetchList(listName):
                 await page.waitForSelector('#event_list > div > div > div > div.left > div.buttons > a:nth-child(1)')
                 await page.click('#event_list > div > div > div > div.left > div.buttons > a:nth-child(1)')
                 await page.waitFor(3000)
+
                 #set the download location for the runlist .csv file
                 cdp = await page.target.createCDPSession()
                 await cdp.send('Page.setDownloadBehavior', { 'behavior': 'allow', 'downloadPath': 'C:\\Users\\Sean\\Desktop\\Dealership'})
 
                 #click the download link which will download the runlist as .csv file
-                
                 await page.waitForSelector('#content_for_layout > ul > li:nth-child(4) > a')
                 await page.click('#content_for_layout > ul > li:nth-child(4) > a')
                 await page.waitFor(5000)
@@ -85,8 +80,6 @@ async def fetchList(listName):
 
         #if the specified runlist is found, download it to the current directory
         if(found == True):
-            #download the runlist
-            #await downloadRunList()
             print("runlist found")
         else:
             print("runlist was not found")
