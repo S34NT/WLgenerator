@@ -75,13 +75,7 @@ async def main():
         await page.waitForSelector('#vinText', timeout = 5000) 
         clearVin = await page.querySelector('#vinText')
         await page.evaluate('(clearVin) => clearVin.value = ""', clearVin)
-        
-
-        # await page.keyboard.down('Control')
-        # await page.keyboard.press('Backspace')
-        # await page.keyboard.press('ArrowRight')
-        # await page.keyboard.press('Backspace')
-        # await page.keyboard.up('Control')
+    
         
         await page.click('#vinText')
         await page.keyboard.type(vin)
@@ -245,15 +239,7 @@ async def main():
 
     webbrowser.open_new_tab('./output.html')
    
-
-
-
-
-    
-
-
-
-
+   
 asyncio.get_event_loop().run_until_complete(main())
 
 
