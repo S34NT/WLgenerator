@@ -22,8 +22,8 @@ async def main():
     await page.waitForSelector('#user_username', timeout = 30000)
 
     #Login with username and password
-    user_name = "noahscheidmantel"
-    password = "Noahs6427!"
+    user_name = ""
+    password = ""
 
     await page.click('#user_username')
     await page.keyboard.type(user_name)
